@@ -18,7 +18,8 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd SNJB-Data-Analysis
+  cd SNJB-Result-Prediction
+
 ```
 
 Install dependencies
