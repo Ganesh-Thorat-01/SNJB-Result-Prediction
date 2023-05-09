@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>SNJB Computer Department</title>
+    <meta content="" name="description">
+
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="../static/assets/img/SNJB.png" rel="icon">
+    <link href="static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+
+    <!-- Vendor CSS Files -->
+    <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="static/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="static/assets/css/style.css" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css"
+        rel="stylesheet">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+
+
+    <!--<link href="static/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="static/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    ==<"!-- Font special for pages--"">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
+        rel="stylesheet">
+
+    <"!-- Vendor CSS--"">
+    <link href="static/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="static/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!"-- Main CSS--"">
+    <link href="static/css/main.css" rel="stylesheet" media="all">
+    <link href="static/css/predict.css" rel="stylesheet">
+    -->
+    <!-- =======================================================
+  * Template Name: FlexStart - v1.9.0
+  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+    {{ dropzone.load_css() }}
+    {{ dropzone.style('border: 2px dashed #0087F7; margin: 10%; min-height: 400px;') }}
+
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+            <a href="/" class="logo d-flex align-items-center">
+                <img src="../static/assets/img/logo.png" alt="">
+                <span>SNJB</span>
+            </a>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="/">Home</a></li>
+                    <li><a class="nav-link scrollto" href="/prediction">Prediction</a></li>
+                    <li><a class="getstarted scrollto" href="/analysis">Analysis</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
+    <br><br><br>
+    <ul style="margin-top: 3%;margin-left:10% ;" class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+                type="button" role="tab" aria-controls="pills-home" aria-selected="true">Form</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
+                type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Sheet</button>
+        </li>
+    </ul>
+    <br><br>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div style="margin-left: 5%;">
+                <div class="form-container">
+                    <form action="/prediction/results" method="post">
+                        <h2>Student Data</h2>
+                        <label class="form-label" for="dse">DSE:</label>
+                        <select id="dse" name="dse" class="form-select" onchange="show2SemSGPAInput(event)" required>
+                            <option value="" selected disabled hidden>--select--</option>
+                            <option value="YES">YES</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <label class="form-label" for="semester1-select" id="semester1-select-label">Semester 1:</label>
+                        <div class="row">
+                            <select id="semester1-select" name="semester1-select" class="form-select"
+                                onchange="showSGPAInput(event)" required>
+                                <option value="" selected disabled hidden>--select--</option>
+                                <option value="Failed">Failed</option>
+                                <option value="YD">YD</option>
+                                <option value="ATKT">ATKT</option>
+                                <option value="Cleared">Cleared</option>
+                            </select>
+                            <input type="number" id="semester1-sgpa" name="semester1-sgpa" class="form-sgpa" min="0"
+                                max="10" step="0.01" placeholder="Enter SGPA" style="display:none;" required>
+                            <input type="number" id="atkt1" name="atkt1" class="form-sgpa" step="1"
+                                placeholder="Enter Count" style="display:none;" required>
+                        </div>
+
+
+                        <label class="form-label" for="semester2-select" id="semester2-select-label">Semester 2:</label>
+                        <div class="row">
+                            <select id="semester2-select" name="semester2-select" class="form-select"
+                                onchange="showSGPAInput(event)" required>
+                                <option value="" selected disabled hidden>--select--</option>
+                                <option value="Failed">Failed</option>
+                                <option value="YD">YD</option>
+                                <option value="ATKT">ATKT</option>
+                                <option value="Cleared">Cleared</option>
+                            </select>
+                            <input type="number" id="semester2-sgpa" name="semester2-sgpa" class="form-sgpa" min="0"
+                                max="10" step="0.01" placeholder="Enter SGPA" style="display:none;" required>
+                            <input type="number" id="atkt2" name="atkt2" class="form-sgpa" step="1"
+                                placeholder="Enter Count" style="display:none;" required>
+                        </div>
+
+
+                        <label class="form-label" for="semester3-select">Semester 3:</label>
+                        <div class="row">
+                            <select id="semester3-select" name="semester3-select" class="form-select"
+                                onchange="showSGPAInput(event)" required>
+                                <option value="" selected disabled hidden>--select--</option>
+                                <option value="Failed">Failed</option>
+                                <option value="YD">YD</option>
+                                <option value="ATKT">ATKT</option>
+                                <option value="Cleared">Cleared</option>
+                            </select>
+                            <input type="number" id="semester3-sgpa" name="semester3-sgpa" class="form-sgpa" min="0"
+                                max="10" step="0.01" placeholder="Enter SGPA" style="display:none;" required>
+                            <input type="number" id="atkt3" name="atkt3" class="form-sgpa" step="1"
+                                placeholder="Enter Count" style="display:none;" required>
+                        </div>
+                        <label class="form-label" for="semester4-select">Semester 4:</label>
+                        <div class="row">
+                            <select id="semester4-select" name="semester4-select" class="form-select"
+                                onchange="showSGPAInput(event)" required>
+                                <option value="" selected disabled hidden>--select--</option>
+                                <option value="Failed">Failed</option>
+                                <option value="YD">YD</option>
+                                <option value="ATKT">ATKT</option>
+                                <option value="Cleared">Cleared</option>
+                            </select>
+                            <input type="number" id="semester4-sgpa" name="semester4-sgpa" class="form-sgpa" min="0"
+                                max="10" step="0.01" placeholder="Enter SGPA" style="display:none;" required>
+                            <input type="number" id="atkt4" name="atkt4" class="form-sgpa" step="1"
+                                placeholder="Enter Count" style="display:none;" required>
+                        </div>
+                        <label class="form-label" for="semester5-select">Semester 5:</label>
+                        <div class="row">
+                            <select id="semester5-select" name="semester5-select" class="form-select"
+                                onchange="showSGPAInput(event)" required>
+                                <option value="" selected disabled hidden>--select--</option>
+                                <option value="Failed">Failed</option>
+                                <option value="YD">YD</option>
+                                <option value="ATKT">ATKT</option>
+                                <option value="Cleared">Cleared</option>
+                            </select>
+                            <input type="number" id="semester5-sgpa" name="semester5-sgpa" class="form-sgpa" min="0"
+                                max="10" step="0.01" placeholder="Enter SGPA" style="display:none;" required>
+                            <input type="number" id="atkt5" name="atkt5" class="form-sgpa" step="1"
+                                placeholder="Enter Count" style="display:none;" required>
+                        </div>
+                        <label class="form-label" for="semester6-select">Semester 6:</label>
+                        <div class="row">
+                            <select id="semester6-select" name="semester6-select" class="form-select"
+                                onchange="showSGPAInput(event)" required>
+                                <option value="" selected disabled hidden>--select--</option>
+                                <option value="Failed">Failed</option>
+                                <option value="YD">YD</option>
+                                <option value="ATKT">ATKT</option>
+                                <option value="Cleared">Cleared</option>
+                            </select>
+                            <input type="number" id="semester6-sgpa" name="semester6-sgpa" class="form-sgpa" min="0"
+                                max="10" step="0.01" placeholder="Enter SGPA" style="display:none;" required>
+                            <input type="number" id="atkt6" name="atkt6" class="form-sgpa" step="1"
+                                placeholder="Enter Count" style="display:none;" required>
+                        </div>
+                        <label class="form-label" for="semester7-select">Semester 7:</label>
+                        <div class="row">
+                            <select id="semester7-select" name="semester7-select" class="form-select"
+                                onchange="showSGPAInput(event)" required>
+                                <option value="" selected disabled hidden>--select--</option>
+                                <option value="Failed">Failed</option>
+                                <option value="YD">YD</option>
+                                <option value="ATKT">ATKT</option>
+                                <option value="Cleared">Cleared</option>
+                            </select>
+                            <input type="number" id="semester7-sgpa" name="semester7-sgpa" class="form-sgpa" min="0"
+                                max="10" step="0.01" placeholder="Enter SGPA" style="display:none;" required>
+                            <input type="number" id="atkt7" name="atkt7" class="form-sgpa" step="1"
+                                placeholder="Enter Count" style="display:none;" required>
+                        </div>
+
+
+
+                        <input type="submit" class="form-button" value="Submit">
+
+                        <div class="result-container" id="result"></div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <div style="margin-left: 5%;">
+                <div class="sheetUrl">
+                    <a href=/sheets/template.xlsx  style="margin-right: 30px;">Template Sheet</a>
+                    <a href=/sheets/example.xlsx  style="margin-right: 5px;">Example Sheet</a>
+                </div>
+                
+                {{ dropzone.create(action='/prediction/multipleresults') }}
+                {{ dropzone.load_js() }}
+                {{ dropzone.config() }}
+            </div>
+        </div>
+
+
+    </div>
+    <br><br><br><br><br><br><br>
+    <section id="footer" style="margin-bottom: 0;">
+        <div class="social-links">
+            <a href="https://github.com/Ganesh-Thorat-01" target="_blank"><i class="fa fa-github"></i></a>
+            <a href="mailto:thorat.ganeshscoe@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a>
+            <a href="https://www.instagram.com/ganesh_thorat__/" target="_blank"><i class="fa fa-instagram"></i></a>
+            <a href="https://twitter.com/Ganesh_Thorat_" target="_blank"><i class="fa fa-twitter"></i></a>
+            <p>&copy; Copyright 2023 Ganesh Thorat</p>
+        </div>
+    </section>
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="static/assets/vendor/purecounter/purecounter.js"></script>
+    <script src="static/assets/vendor/aos/aos.js"></script>
+    <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="static/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+
+    <script src="static/assets/js/main.js"></script>
+
+</body>
+
+<style>
+    .sheetUrl{
+        margin-left: 10%;
+    }
+    /* Container for form elements */
+    .form-container {
+        background-color: #fcfcfc;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        width: 50%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .form-container h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #333;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .row {
+        display: flex;
+    }
+
+
+    /* Labels for form elements */
+    .form-label {
+        display: block;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    /* Select inputs */
+    .form-select {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        background-color: #fff;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        margin-right: 10px;
+        width: 150px;
+    }
+
+    /* SGPA input fields */
+    .form-sgpa {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        background-color: #fff;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        margin-right: 10px;
+        width: 150px;
+        margin-left: 10px;
+    }
+
+    /* Calculate button */
+    .form-button {
+        background-color: blue;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 20px;
+
+    }
+
+    .form-button:hover {
+        background-color: rgb(108, 110, 240);
+    }
+
+    /* Result container */
+    .result-container {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .result-label {
+        font-size: 16px;
+        font-weight: normal;
+        color: #333;
+        margin-right: 10px;
+    }
+
+    .result-value {
+        font-size: 24px;
+        color: #008CBA;
+    }
+
+    @media (max-width: 768px) {
+        .form-container {
+            width: 90%;
+
+        }
+    }
+</style>
+
+<script>
+    function showSGPAInput(event) {
+        const semIndex = parseInt(event.target.id.replace("semester", "").replace("-select", "")) - 1;
+        const sgpaInput = document.getElementById(`semester${semIndex + 1}-sgpa`);
+        const atktInput = document.getElementById(`atkt${semIndex + 1}`);
+        if (event.target.value === "Cleared") {
+            sgpaInput.style.display = "inline-block";
+        } else {
+            sgpaInput.style.display = "none";
+        }
+        if (event.target.value != "Cleared") {
+            sgpaInput.required = false;
+        }
+        else {
+            sgpaInput.required = true;
+        }
+        if (event.target.value != "ATKT") {
+            atktInput.required = false;
+        }
+        else {
+            atktInput.required = true;
+        }
+        if (event.target.value === "ATKT") {
+            atktInput.style.display = "inline-block";
+        }
+        else {
+            atktInput.style.display = "none";
+        }
+
+    }
+
+    function show2SemSGPAInput(event) {
+        const dseInput = document.getElementById('dse');
+        if (event.target.value === "NO") {
+            document.getElementById('semester1-select').style.display = "inline-block";
+            document.getElementById('semester2-select').style.display = "inline-block";
+            document.getElementById('semester1-select-label').style.display = "inline-block";
+            document.getElementById('semester2-select-label').style.display = "inline-block";
+            document.getElementById('semester1-select').required = true;
+            document.getElementById('semester2-select').required = true;
+        }
+        else {
+            document.getElementById('semester1-select').style.display = "none";
+            document.getElementById('semester2-select').style.display = "none";
+            document.getElementById('semester1-select-label').style.display = "none";
+            document.getElementById('semester2-select-label').style.display = "none";
+            document.getElementById('semester1-select').required = false;
+            document.getElementById('semester2-select').required = false;
+            document.getElementById('semester1-sgpa').required = false;
+            document.getElementById('semester2-sgpa').required = false;
+            document.getElementById('atkt1').required = false;
+            document.getElementById('atkt2').required = false;
+        }
+    }
+</script>
+
+</html>
